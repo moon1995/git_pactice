@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.js" type="text/javascript"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width:900px;height:400px;"></div>
+    <script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    option = {
+        title : {
+            text: 'A站点用户访问来源',
+            subtext: '纯属虚构娱乐专用',
+//          副标题
+            x:'center'
+        },
+        legend: {
+//      	图例
+            orient: 'vertical',
+//         图例列表的布局朝向
+            right: '30%',
+            data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        },
+        series : [
+//      系列列表。每个系列通过 type 决定自己的图表类型，具体样式设置在里面
+            {
+                name: '访问来源',
+                type: 'pie',
+                radius : '45%',
+//              半径
+                center: ['50%', '60%'],
+//              圆心
+                data:[
+                    {value:336, name:'直接访问'},
+                    {value:810, name:'邮件营销'},
+                    {value:234, name:'联盟广告'},
+                    {value:135, name:'视频广告'},
+                    {value:1878, name:'搜索引擎'}
+                ],
+            }
+        ]
+    };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
+</html>

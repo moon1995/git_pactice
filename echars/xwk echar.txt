@@ -1,0 +1,36 @@
+交流,简单说说echars和我认为里面常用的对象
+接口:http://echarts.baidu.com/index.html
+老版本:http://echarts.baidu.com/echarts2/index.html(个人感觉用户体验更好)
+1.echars是什么,为什么用他--简介和特性
+纯js图表库
+简单说就是快，小，pc,m全适应,兼容性好，可交互，只关注数据就可以(相对highchars,jqplot)
+2.如何使用echars--下载，引入，属性方法 
+下载：官网http://echarts.baidu.com/download.html 
+npm：npm install echarts --save 
+cdn：https://cdn.bootcss.com/echarts/3.5.0/echarts.common.js
+引入:<script src="echarts.js"></script> 
+<scriptsrc="https://cdn.bootcss.com/echarts/3.5.0/echarts.common.js"></script>
+属性方法!!!:运行要做的前期工作！！！ <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width:***px;height:***px;/height: 100%"></div>
+[对体积有苛刻要求:// 引入 ECharts 主模块
+var echarts = require('echarts/lib/echarts');
+// 引入柱状图
+require('echarts/lib/chart/bar');
+// 引入提示框和标题组件
+require('echarts/lib/component/tooltip');
+require('echarts/lib/component/title');]
+// 基于准备好的dom，初始化echarts实例
+   var myChart = echarts.init(document.getElementById('main'));
+// 使用刚指定的配置项和数据显示图表(放option下面)
+  myChart.setOption(option);
+简单图实例
+异步加载:图表加载顺序在后可以异步获得 动画:myChart.showLoading();
+动态更新setOption填入数据
+交互组件:加入不同type
+移动端自适应Media Query
+3.!友情提示!：
+需要用时打开all demos寻找粘贴更改如果不满意自己在线下载构建：http://echarts.baidu.com/builder.html
+实例模板：http://echarts.baidu.com/echarts2/doc/example.html（因为3的打不开，性能不好）
+如果自学对属性，方法(行为事件)不了解，打开API参考，也可以看配置项手册或者登陆http://echarts.baidu.com/echarts2/doc/doc.html#简介（有图比较直观）
+更多企业级应用:https://wenku.baidu.com/view/7dc6a13d4a73f242336c1eb91a37f111f1850d81.html	
+4.!总结!(可能是班门弄斧废话):技术创新学习三部曲 联系发展 官网api教程 github学习	
