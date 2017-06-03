@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>tuozhuai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: #AAAAAA;
+            position: absolute;
+            float: left;
+        }
+        #div2{
+            position: relative;
+            left: 100px;
+            top: 100px;
+
+            width: 500px;
+            height: 500px;
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+<div id="div2">
+    <div id="div1">
+    </div>
+</div>
+<script>
+    var div1 = document.getElementById("div1");
+    var div2 = document.getElementById("div2");
+    div1.onmousedown = function t1(ev) {
+        var oEvent = ev || event;
+        var zuo = oEvent.clientX - div1.offsetLeft;
+        var shang = oEvent.clientY - div1.offsetTop;
+        document.onmousemove = function (ev) {
+            div1.innerHTML = "left:" + div1.offsetLeft + "\n" + "top:" + div1.offsetTop;
+            var oEvent = ev || event;
+            div1.style.top = oEvent.clientY - shang + "px";
+            div1.style.left = oEvent.clientX - zuo + "px";
+//            左边
+            if (div1.offsetLeft < 0) {
+                div1.style.left = 0;
+            }
+//            右
+            if (div1.offsetLeft >div2.offsetWidth-div1.offsetWidth) {
+                div1.style.left = div2.offsetWidth-div1.offsetWidth -2+ "px"
+            }
+//            上
+            if (div1.offsetTop < 0) {
+                div1.style.top = 0;
+            }
+//            下
+            if (div1.offsetTop >= div2.offsetHeight-div1.offsetHeight) {
+                div1.style.top =  div2.offsetHeight-div1.offsetHeight-2 + "px"
+            }
+        };
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            div1.onmouseup = null;
+        };
+        return false;
+    };
+//    document.onmousedown = function () {
+//        return false;
+//    }
+</script>
+</body>
+
+</html>
